@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 
 
 const Card  = styled.div`
@@ -10,6 +10,7 @@ const Card  = styled.div`
     display: flex;
     flex-direction: column;
     margin: 5px;
+    position: relative;
 `;
 
 export {Card};
