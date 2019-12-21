@@ -1,5 +1,5 @@
-import React from "react";
-import { Image, Label, Card } from "./components/common";
+import React, { Component } from "react";
+import { Image, Label, Product } from "./components/common";
 import styled from 'styled-components';
 
 const products = [
@@ -41,48 +41,31 @@ const products = [
 ];
 
 
-const IconWrapper = styled.div`
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #DDD;
-  border-radius: 25px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  padding: 5px;
-`;
 
-const IconImage = styled.img`
-  width: 25px;
-  height: 25px;
-`;
+class Main extends Component{
 
-function Main() {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "50vh",
-        display: 'flex', flexWrap: 'wrap',
-          justifyContent: 'space-evenly'
-      }}
-    >
-      {products.map(item => (
-        <Card>
-            <Image src={item.imageUri} />
+  constructor(props) {
+    super(props);
 
-            <Label>{item.name}</Label>
-            <IconWrapper>
-                <IconImage  src={require('./assets/like.svg')}/>
-            </IconWrapper>
+    this.state = {isSelected: false}
+  }
 
-        </Card>
-      ))}
-    </div>
-  );
+  render() {
+    return (
+        <div
+            style={{
+              width: "100%",
+              height: "50vh",
+              display: 'flex', flexWrap: 'wrap',
+              justifyContent: 'space-evenly'
+            }}
+        >
+          {products.map(item => (
+            <Product imageUri={item.imageUri} name={item.name} />
+          ))}
+        </div>
+    );
+  }
 }
 
 export default Main;
