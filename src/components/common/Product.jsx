@@ -34,11 +34,11 @@ const IconImage = styled.img`
 `;
 
 const Button = styled.button`
- padding: 10px;
- margin: 2px;
- background-color: coral;
- color: white;
- font-weight: 500;
+  padding: 10px;
+  margin: 2px;
+  background-color: coral;
+  color: white;
+  font-weight: 500;
 `;
 let a = { a: 1, b1: 2, c1: { c11: 1 } };
 
@@ -50,15 +50,21 @@ class Product extends Component {
 
   render() {
     console.log(this.props);
-    const { imageUri, name } = this.props;
+    const {
+      item: { imageUri, name, id },
+      addToCart,
+      addToCartCollection,
+      removeToCart,
+      goToCart
+    } = this.props;
     const { isSelected } = this.state;
-
+    const isInCart = addToCartCollection.find(citem => citem.id === id);
     return (
-      <Card onClick={()=> this.setState({isSelected:!isSelected})}>
+      <Card>
         <Image src={imageUri} />
 
         <Label>{name}</Label>
-        <IconWrapper>
+        <IconWrapper onClick={() => this.setState({ isSelected: !isSelected })}>
           <IconImage
             src={
               isSelected
@@ -67,7 +73,12 @@ class Product extends Component {
             }
           />
         </IconWrapper>
-          <Button> Go to Cart</Button>
+        {isInCart ? (
+          <Button onClick={() => goToCart()}> Go to Cart</Button>
+        ) : (
+          <Button onClick={() => addToCart(id, name)}> Add to Cart</Button>
+        )}
+        {isInCart && <Button onClick={() => removeToCart(id)}> Remove</Button>}
       </Card>
     );
   }
