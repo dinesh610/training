@@ -12,6 +12,7 @@ const Card = styled.div`
   flex-direction: column;
   margin: 5px;
   position: relative;
+  font-family: 'Nunito', sans-serif;
 `;
 
 const IconWrapper = styled.div`
