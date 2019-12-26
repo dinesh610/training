@@ -5,6 +5,7 @@ import Cart from './pages/Cart';
 import styled from 'styled-components';
 
 import { createBrowserHistory } from 'history';
+import Users from "./pages/Users";
 const history = createBrowserHistory();
 
 const NavBar = styled.nav`
@@ -55,11 +56,15 @@ const App = () => {
                   <li className="link">
                       <Link to={'/cart'}> Cart </Link>
                   </li>
+                  <li className="link">
+                      <Link to={'/users'}> Users </Link>
+                  </li>
               </ul>
           </NavBar>
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/cart" component={Cart} />
+          <Route path="/users" component={Users} />
         </Switch>
       </BrowserRouter>
     );
