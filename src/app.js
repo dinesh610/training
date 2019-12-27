@@ -61,6 +61,7 @@ const App = () => {
                   </li>
               </ul>
           </NavBar>
+          
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/cart" component={Cart} />
